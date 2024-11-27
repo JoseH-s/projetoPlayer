@@ -47,7 +47,7 @@ class Inventario {
 
     public function capacidadeLivre(): void {
         $capacidadeLivre = $this->capacidadeMaxima - $this->espacoUsado();
-        echo "<br>A capacidade livre é {$capacidadeLivre}.";
+        echo "<br>A capacidade livre é {$capacidadeLivre}.<br>";
     }
 }
-?>
+
