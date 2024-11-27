@@ -4,7 +4,7 @@ require_once('Item.php');
 
 class Magia extends Item{
     
-    public function __construct(string $nome, int $tamanho , string $classe) {
-        parent::__construct($nome, $tamanho, $classe );
+    public function __construct(string $nome) {
+        parent::__construct($nome, 2, "Magia");
     }
 }
