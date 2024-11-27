@@ -6,9 +6,9 @@ class Item {
     private string $classe;
 
     public function __construct(string $name, int $tamanho , string $classe) {
-        $this->name = $name;
-        $this->tamanho = $tamanho;
-        $this->classe = $classe;
+        $this->setName($name);
+        $this->setTamanho($tamanho);
+        $this->setClasse($classe);
     }
 
     public function getName():string{
@@ -42,11 +42,12 @@ class Item {
     }
 
     public function setClasse(string $classe):void{
-        if ($classe == "Ataque" or $classe == "Defesa" or $classe == "Magia"){
-            $this->classe = $classe;
+        if ($classe == ""){
+            echo "Adicione uma classe!";
         }
         else{
-            echo "essa Classe não existe";
+            
+            $this->classe = $classe;
         }
     }
 }
