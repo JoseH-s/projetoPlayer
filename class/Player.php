@@ -3,29 +3,51 @@ require_once('Inventario.php');
 require_once('Item.php');
 
 class Player {
-    private string $nickname;
-    private int $nivel;
+    private string $nickName;
+    private int $nivel = 1;
     private Inventario $inventario;
 
-    public function __construct(string $nickname, int $nivel, Inventario $inventario) {
-        $this->nickname = $nickname;
-        $this->nivel = $nivel;
-        $this->inventario = $inventario;
+    public function __construct(string $nickName) {
+        $this->setNickName($nickName);
+        $this->inventario = new Inventario();
     }
 
-    public function getNickname(): string {
-        return $this->nickname;
+    public function getInventario(): Inventario {
+        return $this->inventario;
+    }
+
+
+    public function getNickName(): string {
+        return $this->nickName;
+    }
+
+   
+    public function setNickName(string $nickName): void {
+        if($nickName == ""){
+            $this->nickName = "Escreva o nome";
+        } else{
+            $this->nickName = $nickName;
+            echo "<br>Você criou o personagem {$this->nickName}, comece a sua jornada!<br>";
+        }
     }
 
     public function getNivel(): int {
         return $this->nivel;
     }
 
+    public function setNivel(string $nivel): void {
+        if($nivel <= 0){
+            $this->nivel = 1;
+        } else{
+            $this->nivel = $nivel;
+        }
+    }
+
     public function subirNivel(): void {
         $this->nivel+=1;
         $novaCapacidade = $this->inventario->getCapacidadeMaxima() + ($this->nivel * 3);
         $this->inventario->setCapacidadeMaxima($novaCapacidade);
-        echo "<br>O personagem subiu para o nível {$this->nivel} e seu inventário aumentou para {$this->inventario->getCapacidadeMaxima()}.";
+        echo "<br>O personagem {$this->nickName} subiu para o nível {$this->nivel} e seu inventário aumentou para {$this->inventario->getCapacidadeMaxima()}.";
 
         $this->inventario->capacidadeLivre();
     }
